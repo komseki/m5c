@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Dial-sample</title>
+		
+		<link type="text/css" rel="stylesheet" media="all" href="../css/common.css" />
+		
+		<script type="text/javascript" src="../js/libs/webcomponents.js" ></script>
+		
+		<!-- 라이브러리 링크-->
+		<script type="text/javascript" src="../js/m5c.client.core.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.components.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.config.js" ></script>
+		
+		<!-- 템플릿 링크 -->
+		<link rel="import" href="../components/template.dial.html">
+		
+		<style>
+			
+			html, body {
+				background : #DDD;
+				height :100%;
+				width : 100%;
+			}
+			
+			#PAGE {
+				padding : 3%;
+			}
+			
+			.panel {
+				padding : 20px;
+				background : #FFFFFF;
+			}
+			
+			.comptypeslist {
+				display: block;
+				position: relative;
+				text-align: center;
+			}
+			
+			.comptypeslist li.comp {
+				display:inline-block;
+			}
+			
+			.comprows {
+				display:inline-block;
+				text-align: center;
+				margin : 0 auto;
+			}
+			
+			.compwrap {
+				min-width : 206px;
+				text-align: center;
+				float : left;
+				margin-right : 15px;
+			}
+			
+			.compwrap.lst {
+				margin-right : 0;
+			}
+			
+			.compwrap.subject {
+				text-align : center;
+			}
+			
+			.compwrap .title {
+				color : #000;
+			}
+			
+		</style>
+		
+		
+		<script type="text/javascript">
+			m5c.ready( function(){
+			} );
+		</script>
+
+	</head>
+
+	
+	<body>
+		<div id="PAGE">
+			<div class="panel">
+				<ul class="comptypeslist">
+					<li class="comptypes">
+						<ul class="comprows">
+							<li class="compwrap subject">
+								<strong class="title">Default</strong>
+							</li>
+							<li class="compwrap subject lst">
+								<strong class="title">Disabled</strong>
+							</li>
+						</ul>
+					</li>
+					
+					<li class="comptypes">
+						<ul class="comprows">
+							<li class="compwrap comp">
+								<m5c-dial m5c-cmd="sample" send-value="" connect="true" min="0" max="100" value="0" >
+								</m5c-dial>
+							</li>
+							<li class="compwrap comp lst">
+								<m5c-dial m5c-cmd="sample" send-value="" connect="true" min="0" max="100" value="26" disabled>
+								</m5c-dial>
+							</li>
+						</ul>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

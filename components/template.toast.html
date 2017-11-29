@@ -1,0 +1,27 @@
+
+<!-- BUTTON -->
+
+<template id="tmpl-m5c-toast">
+	<style>@import "../components/css/template.css";</style>
+	<div class="m5c-toast hidden">
+		<div class="m5c-toast-box"><content></content></div>
+	</div>
+</template>
+
+
+
+<script>
+(function(){
+	m5c.register( {
+		is : 'm5c-toast',
+		template : '#tmpl-m5c-toast',
+		prototype : m5c.component.getPrototype( 'toast' )
+	});
+})();
+</script>
+
+
+
+
+
+

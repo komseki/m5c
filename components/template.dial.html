@@ -1,0 +1,45 @@
+
+<!-- BUTTON -->
+
+<template id="tmpl-dial">
+	<style>
+		@import "../components/css/template.css";
+		:host {
+			display : block;
+			width : 206px;
+			height : 248px;
+		}
+	</style>
+	<div class="m5c-dial">
+		<canvas class="m5c-dial-paper" width="206px" height="248px" ></canvas>
+	</div>
+</template>
+
+
+
+<script>
+(function(){
+	m5c.register( {
+		is : 'm5c-dial',
+		template : '#tmpl-dial',
+		prototype : m5c.component.getPrototype( 'dial' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			},
+			attachedCallback : function(){},
+			detachedCallback : function(){},
+			attributeChangedCallback : function(){}
+		}
+	});
+})();
+</script>
+
+
+
+
+
+

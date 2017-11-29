@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<!-- apple -->
+		<meta name="apple-mobile-web-app-capable" content="yes"> 
+		<meta name="apple-touch-fullscreen" content="yes">		 
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<title>core : event, data 테스트</title>
+		
+		<!-- 라이브러리 링크-->
+		<script type="text/javascript" src="../js/m5c.client.js" ></script>
+		<script type="text/javascript" src="../js/m5c.config.js" ></script>
+		<script type="text/javascript" src="../js/libs/jquery-2.1.4.js" ></script>
+		
+		<!-- 템플릿 링크 -->
+		<link rel="import" href="../components/arduino-template.html">
+	</head>
+
+	
+	<body>
+		
+		<p>m5c.core.event, m5c.core.data 테스트 콘솔을 통해 확인</p>
+		
+		<div id="click1"><a href="javascript:void(0);"><strong>기본이벤트</strong></a></div>
+		<div id="click2"><a href="javascript:void(0);"><strong>이벤트시 데이터전달</strong></a></div>
+		<div id="click3"><a href="javascript:void(0);"><strong>이벤트 바인딩</strong></a></div>
+		<div id="click4"><a href="javascript:void(0);"><strong>이벤트삭제대상</strong></a></div>
+		<div id="click5"><a href="javascript:void(0);"><strong>click4의 이벤트삭제</strong></a></div>
+		<div id="click6"><a href="javascript:void(0);"><strong>사용자 확장 이벤트 타입</strong></a></div>
+		
+		<hr />
+		<p>Gesture test</p>
+		<div style="background:#FF9;padding: 4px;">
+			<div style="margin:7px;margin-left: 100px;">
+				<div style="padding:20px; background:#F9F; position:relative;">
+					<div id="stage1" style="position:relative;width:100%;min-width:700px;height:400px;background: #DDD;border:1px solid #F00;">
+						<div id="box1" style="width:50px;height:50px;background: #000; position:absolute;left:0;top:0;"></div>
+						<div id="box2" style="width:50px;height:50px;background: #F00; position:absolute;right:0;top:0;"></div>
+						<div id="box3" style="width:50px;height:50px;background: #0F0; position:absolute;left:0;top:50px;display:none;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+<!-- 테스트 스크립트 영역 -->	
+<script>
+	(function(){
+		
+
+		var el1 = document.getElementById( 'click1');
+		
+		// 이벤트 부여
+		m5c.addEvent( el1, 'click', function(e){
+			console.log( 'this =', this );
+			console.log( 'arguments =', arguments );
+			
+			// 이벤트 삭제
+			//m5c.removeEvent( el1, 'click' );
+		} );
+		
+		var el2 = document.getElementById( 'click2');
+		// 이벤트 
+		m5c.addEvent( el2, 'click', function(e){
+			console.log( 'this =', this );
+			console.log( 'arguments =', arguments );
+			
+			// 이벤트 삭제
+			//m5c.removeEvent( el2, 'click' );
+		}, 1,2,3,4 );
+		
+		
+		// 바인딩 테스트를 위한 객체 생성.
+		var Cls = function(){};
+		Cls.prototype.name = 'someone';
+		Cls.prototype.test = function(){
+			console.log( 'this =', this );
+			console.log( 'arguments =', arguments );
+			
+			// 이벤트 삭제 테스트
+			//var el3 = document.getElementById( 'click3');
+			//m5c.removeEvent( el3, 'click', this.bindingTest );
+		};
+		
+		Cls.prototype.bindingTest = function(){
+			var el3 = document.getElementById( 'click3');
+			//
+			m5c.addEvent( el3, 'click', this, this.test );
+		};
+		
+		// 테스트 객체의 함수에서 이벤트를 부여.
+		var some = new Cls();
+		some.bindingTest();
+		
+		
+		/**
+		 * m5c.removeEvent 타겟, 이벤트타입, 함수를인자로 넘긴다.
+		 * 타겟, 이벤트타입만 넘길경우 해당타겟의 유사한 이벤트를 모두 삭제 한다.
+		 *  */
+		// m5c.data, m5c.core.data.data 테스트
+		var el4 = document.getElementById( 'click4');
+		m5c.addEvent( el4, 'click', function( e ){
+			console.log( e.type );
+		} );
+		
+		m5c.addEvent( el4, 'click', function( e, num ){
+			console.log( num );
+		},1 );
+		
+		m5c.addEvent( el4, 'click', some, some.test );
+		
+		var el5 = document.getElementById( 'click5');
+		m5c.addEvent( el5, 'click', function( e ){
+			m5c.removeEvent( el4, 'click' );
+			console.log('===== 이벤트 삭제 =====' );
+		} );
+		
+		
+		/**
+		 * 데이터 모듈 테스트
+		 *  */
+		m5c.data( el4, {name : 'json'} );
+		console.log( 'name =', m5c.data( el4, 'name' ) );
+		
+		m5c.data( el4, {test : '555'} );
+		console.log( '유저데이터 전체 :', m5c.data( el4 ) );
+		
+		m5c.data( el4, {aaa : 'ddd', test:'none'} );
+		console.log( '유저데이터 전체 :', m5c.data( el4 ) );
+		
+		
+		/**
+		 * 사용자 확장 이벤트 타입 사용.
+		 * 
+		 * [event type] + "." + [user string]
+		 * 
+		 *  */
+		var el6 = document.getElementById('click6');
+		m5c.addEvent( el6, 'click', function( e ){
+			console.log( 'event1' );
+		} );
+		
+		m5c.addEvent( el6, 'click.test', function( e ){
+			console.log( 'event.test' );
+		} );
+		
+		m5c.addEvent( el6, 'click', function( e ){
+			console.log( 'event2' );
+			
+			// 확장한 이벤트만 삭제.
+			m5c.removeEvent( el6, 'click.test' );
+			
+			// click으로 등록된 모든 이벤트 삭제
+			//m5c.removeEvent( el6, 'click' );
+		} );
+		
+		
+		
+		/**
+		 * Gesture
+		 *  */
+		var box1 = document.getElementById('box1');
+		var gesture1 = new m5c.Gesture();
+		gesture1.init( {
+			target : box1,			// must
+			callbackContext : Object,	// default null
+			uxType : "horizontal",			// free, horizontal, vertical
+			slope : ( (window.innerHeight/2) / window.innerWidth ).toFixed(2) * 1, // default
+			minMovePx : 5,				// default 5
+			// callback function
+			onStart : function(e, info){},		// touchstart, mousedown
+			onEnd : function(e, info){},		// touchend, mouseup
+			onCancel : function(e, info){}		// touchcancel, mouseleave
+		} );
+		
+		
+		
+		m5c.addEvent( box1, gesture1.ON_TAB, function( e ){
+			console.log( gesture1.ON_TAB, e.info );
+		} );
+		
+		m5c.addEvent( box1, gesture1.ON_PAN_H, function( e ){
+			var left = parseFloat( box1.style.left, 10 );
+			box1.style.left = ( left + e.info.gabX ) + 'px';
+		} );
+		
+		
+		var box2 = document.getElementById('box2');
+		var gesture2 = new m5c.Gesture();
+		gesture2.init( {
+			target : box2,				// must
+			callbackContext : Object,	// default null
+			uxType : "vertical",		// free, horizontal, vertical
+			slope : ( (window.innerHeight/2) / window.innerWidth ).toFixed(2) * 1, // default
+			minMovePx : 5,				// default 5
+			// callback function
+			onStart : function(e, info){},		// touchstart, mousedown
+			onEnd : function(e, info){},		// touchend, mouseup
+			onCancel : function(e, info){}		// touchcancel, mouseleave
+		} );
+		
+		m5c.addEvent( box2, gesture2.ON_TAB, function( e ){
+			console.log( gesture2.ON_TAB, e.info, gesture1._uxtype, gesture2._uxtype );
+		} );
+		
+		m5c.addEvent( box2, gesture2.ON_PAN_V, function( e ){
+			var top = parseFloat( box2.style.top, 10 );
+			box2.style.top = ( top + e.info.gabY ) + 'px';
+		} );
+		
+		var stage1 = document.getElementById('stage1');
+		var box3 = document.getElementById('box3');
+		var gesture3 = new m5c.Gesture();
+		gesture3.init( {
+			target : stage1,				// must
+			callbackContext : Object,	// default null
+			uxType : "free",		// free, horizontal, vertical
+			slope : ( (window.innerHeight/2) / window.innerWidth ).toFixed(2) * 1, // default
+			minMovePx : 5,				// default 5
+			// ** callback function
+			// touchstart, mousedown
+			onStart : function(e, info){
+				//console.log( stage1.offsetTop, stage1.parentNode.offsetTop, info.thisY );
+				box3.style.left = ( info.thisX - stage1.offsetLeft ) + 'px';
+				box3.style.top = ( info.thisY - box3.offsetTop ) + 'px';
+				if( box3.style.display =='none' ){
+					box3.style.display = 'block';
+				}
+			},
+			// touchend, mouseup
+			onEnd : function(e, info){
+				if( box3.style.display =='block' ){
+					box3.style.display = 'none';
+				}
+			},
+			// touchcancel, mouseleave		
+			onCancel : function(e, info){}
+		} );
+		
+		m5c.addEvent( stage1, gesture3.ON_TAB, function( e ){
+			console.log( "stage ON TAB" );
+		} );
+		
+		m5c.addEvent( stage1, gesture3.ON_DRAG_MOVE, function( e ){
+			var topGab = ( document.body.scrollTop - stage1.scrollTop );
+			box3.style.left = ( e.info.thisX - stage1.offsetLeft ) + 'px';
+			box3.style.top = ( e.info.thisY - stage1.offsetTop - stage1.parentNode.offsetTop ) + 'px';
+		} );
+		
+		
+		m5c.addEvent( stage1, gesture1.ON_PINCH, function( e ){
+			console.log(e.info.distGab);
+		} );
+		
+		
+		
+		
+		
+		
+		
+		
+	})();
+</script>
+		
+		
+	</body>
+</html>

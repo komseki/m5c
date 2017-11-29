@@ -1,0 +1,103 @@
+
+<!-- BUTTON -->
+
+<template id="tmpl-m5c-button01">
+	<style>@import "../components/css/template.css";</style>
+	<a href="javascript:void(0)" class="m5c-button type01 m5c-button-normal">
+		<span><strong><content></content></strong></span>
+	</a>
+</template>
+
+<template id="tmpl-m5c-button02">
+	<style>@import "../components/css/template.css";</style>
+	<a href="javascript:void(0)" class="m5c-button type02 m5c-button-normal">
+		<span><strong><content></content></strong></span>
+	</a>
+</template>
+
+<template id="tmpl-m5c-button03">
+	<style>@import "../components/css/template.css";</style>
+	<a href="javascript:void(0)" class="m5c-button type03 m5c-button-normal">
+		<span><strong><content></content></strong></span>
+	</a>
+</template>
+
+<template id="tmpl-m5c-button04">
+	<style>@import "../components/css/template.css";</style>
+	<a href="javascript:void(0)" class="m5c-button type04 m5c-button-normal">
+		<span><strong><content></content></strong></span>
+	</a>
+</template>
+
+
+
+<script>
+(function(){
+		
+	/**
+	 * Button
+	 *  */
+	m5c.register( {
+		is : 'm5c-button-type01',
+		template : '#tmpl-m5c-button01',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-button-type02',
+		template : '#tmpl-m5c-button02',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-button-type03',
+		template : '#tmpl-m5c-button03',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-button-type04',
+		template : '#tmpl-m5c-button04',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+})();
+</script>
+
+
+
+
+
+

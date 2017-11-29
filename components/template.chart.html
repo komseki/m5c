@@ -1,0 +1,39 @@
+
+<!-- BUTTON -->
+
+<template id="tmpl-bar">
+	<style>
+		@import "../components/css/template.css";
+		:host {
+			display : block;
+		}
+	</style>
+	<div class="m5c-chart">
+		<canvas class="m5c-chart-paper" width="600px" height="440px" ></canvas>
+	</div>
+</template>
+
+
+
+<script>
+(function(){
+	m5c.register( {
+		is : 'm5c-chart-bar',
+		template : '#tmpl-bar',
+		prototype : m5c.component.getPrototype( 'chart-bar' ),
+		lifecycles : {
+			readyCallback : function(){},
+			createdCallback : function(){},
+			attachedCallback : function(){},
+			detachedCallback : function(){},
+			attributeChangedCallback : function(){}
+		}
+	});
+})();
+</script>
+
+
+
+
+
+

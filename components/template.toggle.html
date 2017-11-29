@@ -1,0 +1,124 @@
+<!-- TOGGLE -->
+
+<template id="tmpl-toggle01">
+	<style>@import "../components/css/template.css";</style>
+	<div class="m5c-toggle-button type01 m5c-toggle-button-off">
+		<div class="m5c-toggle-button-text"><content></content></div>
+		<div class="m5c-toggle-button-container m5c-toggle-button-target">
+			<div class="m5c-toggle-button-bg">
+			</div>
+			<div class="m5c-toggle-button-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+<template id="tmpl-toggle02">
+	<style>@import "../components/css/template.css";</style>
+	<div class="m5c-toggle-button type02 m5c-toggle-button-off">
+		<div class="m5c-toggle-button-text"><content></content></div>
+		<div class="m5c-toggle-button-container m5c-toggle-button-target">
+			<div class="m5c-toggle-button-bg">
+			</div>
+			<div class="m5c-toggle-button-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+<template id="tmpl-toggle03">
+	<style>@import "../components/css/template.css";</style>
+	<div class="m5c-toggle-button type03 m5c-toggle-button-off">
+		<div class="m5c-toggle-button-text"><content></content></div>
+		<div class="m5c-toggle-button-container m5c-toggle-button-target">
+			<div class="m5c-toggle-button-bg">
+			</div>
+			<div class="m5c-toggle-button-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+<template id="tmpl-toggle04">
+	<style>@import "../components/css/template.css";</style>
+	<div class="m5c-toggle-button type04 m5c-toggle-button-off">
+		<div class="m5c-toggle-button-text"><content></content></div>
+		<div class="m5c-toggle-button-container m5c-toggle-button-target">
+			<div class="m5c-toggle-button-bg">
+			</div>
+			<div class="m5c-toggle-button-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<script>
+(function(){
+	/**
+	 * Toggle
+	 *  */
+	m5c.register( {
+		is : 'm5c-toggle-type01',
+		template : '#tmpl-toggle01',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-toggle-type02',
+		template : '#tmpl-toggle02',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-toggle-type03',
+		template : '#tmpl-toggle03',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-toggle-type04',
+		template : '#tmpl-toggle04',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+})();
+</script>
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+<!-- SLIDER -->
+
+<template id="m5c-panel">
+    <style>@import "../components/css/template.css?cache=1";</style>
+	<div class="test-wrap">
+	    <div class="test-icon"><content></content></div>
+	</div>
+</template>
+
+
+<script>
+(function(){
+	
+	/**
+	 * Slider
+	 *  */
+	m5c.register( {
+		is : 'm5c-panel',
+		template : '#m5c-panel',
+		prototype : m5c.component.getPrototype( '' ),
+		lifecycles : {
+			readyCallback : function(){
+				//this.create();
+				console.log( 'ready ==========' );
+				console.log( $( this ).width(), $( this ).height() );
+				
+                var style = window.getComputedStyle( this, null );
+                console.log( style.width, style.height );
+                
+                var root = this.root;
+                var canvas = document.createElement( 'canvas' );
+                var ctx = canvas.getContext( '2d' );
+                canvas.width = style.width.replace( /px/gi, '' );
+                canvas.height = style.height.replace( /px/gi, '' );
+                
+                root.querySelector( '.test-wrap' ).appendChild( canvas );
+                
+                ctx.beginPath();
+                ctx.fillStyle = 'rgba( 255, 255, 255, 0.5 )';
+                ctx.fillRect( 0, 0, canvas.width, canvas.height );
+                ctx.closePath();
+				
+			},
+			createdCallback : function(){
+				//this.init();
+			}
+		}
+	});
+	
+})();
+</script>
+
+
+
+
+
+

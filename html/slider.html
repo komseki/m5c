@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Slider-sample</title>
+		
+		<link type="text/css" rel="stylesheet" media="all" href="../css/common.css" />
+		
+		<script type="text/javascript" src="../js/libs/webcomponents.js" ></script>
+		
+		<!-- 라이브러리 링크-->
+		<script type="text/javascript" src="../js/m5c.client.core.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.components.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.config.js" ></script>
+		
+		<!-- 템플릿 링크 -->
+		<link rel="import" href="../components/template.slider.html">
+		
+		<style>
+			
+			body {
+				background : #DDD;
+				padding : 3%;
+			}
+			
+			.panel {
+				padding : 20px;
+				background : #FFFFFF;
+			}
+			
+			.comptypeslist {
+				position: relative;
+				text-align: left;
+			}
+			
+			.comptypes {
+				
+			}
+			
+			.comprows {
+				display:inline-block;
+				text-align: left;
+				margin : 0 auto;
+			}
+			
+			.compwrap {
+				min-width : 120px;
+				text-align: left;
+				float : left;
+				margin-right: 30px;
+			}
+			
+			.compwrap.lst {
+				margin-right: 0;
+			}
+			
+			.compwrap.subject {
+				text-align : left;
+			}
+			
+			.compwrap .title {
+				color : #000;
+			}
+			
+			
+		</style>
+		
+		
+		<script type="text/javascript">
+		
+			function toArray( likeArray ){
+				return Array.prototype.slice.call( likeArray, 0 );
+			}
+		
+			m5c.ready( function(){
+				var normals = toArray( document.body.querySelectorAll( '.off' ) );
+				normals.forEach( function( item, i ){
+					m5c.addEvent( item, item.ON_TAB, function(){
+						console.log( this.state );
+					} );
+				} );
+				
+				var disabled = toArray( document.body.querySelectorAll( '.on' ) );
+				disabled.forEach( function( item, i ){
+					m5c.addEvent( item, item.ON_TAB, function(){
+						console.log( this.state );
+					} );
+				} );
+				
+				var press = toArray( document.body.querySelectorAll( '.disabled' ) );
+				press.forEach( function( item, i ){
+					m5c.addEvent( item, item.ON_TAB, function(){
+						console.log( '이벤트 발생안함' );
+					} );
+				} );
+			} );
+		</script>
+
+	</head>
+
+	
+	<body>
+		<div class="panel">
+			<ul class="comptypeslist">
+				<li class="comptypes">
+					<strong>Default</strong>
+					<m5c-slider m5c-cmd="slider" connect="true" min="1" max="100" step="1" value="1"></m5c-slider>
+				</li>
+				
+				<li class="comptypes">
+					<strong>Disabled</strong>
+					<m5c-slider m5c-cmd="slider" connect="true" min="1" max="100" step="1" value="43" disabled></m5c-slider>
+				</li>
+				
+				<li class="comptypes">
+					<strong>Single</strong>
+					<m5c-slider m5c-cmd="slider" connect="true" min="1" max="100" step="1" value="1"></m5c-slider>
+				</li>
+				
+				<li class="comptypes">
+					<strong>Double</strong>
+					<m5c-slider m5c-cmd="slider" connect="true" min="1" max="50" step="1" value="24" start="10" isdouble="true"></m5c-slider>
+				</li>
+			</ul>
+		</div>
+		
+	</body>
+</html>

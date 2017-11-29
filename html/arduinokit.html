@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Arduino-kit-sample</title>
+		
+		<script type="text/javascript" src="../js/libs/webcomponents.js" ></script>
+		
+		<!-- 라이브러리 링크-->
+		<script type="text/javascript" src="../js/m5c.client.core.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.components.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.config.js" ></script>
+		
+		<!-- 템플릿 링크 -->
+		<link rel="import" href="../components/arduino-template.html">
+		
+		<style>
+			
+			body {
+				background : #DDD;
+				padding : 3%;
+			}
+			
+			.panel {
+				padding : 20px;
+				background : #FFFFFF;
+			}
+			
+			.motor {
+				text-align : center;
+			}
+			.motor .button{
+				margin-right : 10px;
+			}
+			.motor .button.lst{
+				margin:0;
+			}
+			
+			
+		</style>
+		
+		<script type="text/javascript">
+			/* DomContentLoaded, import complete!!
+			m5c.ready( function(){
+				console.log( 'ready' );
+			} );
+			//*/
+		</script>
+	</head>
+
+	
+	<body>
+		
+		<div id="test"><a href="javascript:void(0);"><strong>CLICK</strong></a></div>
+		
+		<div class="panel motor">
+			<!-- 왼쪽 -->
+			<motor-left class="button" m5c-cmd="motor-left" send-value="1" connect="true">
+				Left
+			</motor-left>
+			
+			<!-- 오른쪽 -->
+			<motor-right class="button lst" m5c-cmd="motor-right" send-value="0" connect="true">
+				Right
+			</motor-right>
+			
+			<!-- 속도 -->
+			<motor-speed m5c-cmd="slider" connect="true" min="1" max="10" step="1" value="1"></motor-speed>
+			
+		</div>
+		
+		<hr />
+		
+		<div class="panel">
+			<!-- 릴레이 전원 -->
+			<relay-power m5c-cmd="sample" send-value="" connect="true">
+				확인
+			</relay-power>
+		</div>
+		
+		
+		
+		<hr />
+		
+		<div class="panel">
+			<temperature-display id="tmprtr" class="display" gage-min="0" gage-max="100" gage-value="10" 
+								 m5c-cmd="temperature-display" connect="true">
+			</temperature-display>
+		</div>
+		
+		<hr />
+		
+		<div class="panel">
+			<devicelight-display gage-min="0" gage-max="500" gage-value="43"
+								 m5c-cmd="devicelight-display" connect="true">
+			</devicelight-display>
+		</div>
+		
+		<hr />
+		
+		<div class="panel">
+			<proximity-display gage-min="0" gage-max="100" gage-value="19"
+							   m5c-cmd="proximity-display" connect="true">
+			</proximity-display>
+		</div>
+		
+	</body>
+</html>

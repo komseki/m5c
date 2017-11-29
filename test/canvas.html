@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>canvas</title>
+		
+		<!-- 라이브러리 링크-->
+		<script type="text/javascript" src="../js/m5c.client.js" ></script>
+		<script type="text/javascript" src="../js/m5c.config.js" ></script>
+		<script type="text/javascript" src="../js/libs/jquery-2.1.4.js" ></script>
+		
+		<!-- 템플릿 링크 -->
+		
+		<style>
+			
+			* {
+				margin:0;
+				padding:0;
+			}
+			
+			html, body {
+				width : 100%;
+				height : 100%;
+			}
+			
+		</style>
+		
+	</head>
+
+	
+	<body>
+		
+		<div id="container" style="width:600px;height:600px;position: relative;">
+			<canvas id="paper" width="600px" height="600px" style="width:100%;height:100%;display:block;border:1px solid #000;" ></canvas>
+		</div>
+		
+<!-- 테스트 스크립트 영역 -->	
+<script>
+	(function(){
+		
+		var canvas = document.getElementById('paper');
+		var ctx = canvas.getContext( '2d' );
+		var PI = Math.PI;
+		var RAD = PI / 180;
+		var DEG = 180 / PI;
+		
+		
+		var cx = 100,
+		cy = 300,
+		sRad = 0,
+		eRad = 2 * PI,
+		r = 70,
+		r1 = 50,
+		titleY = 13,
+		valueY = 6,
+		w = r - r1,
+		degree;
+		
+		
+		
+		ctx.beginPath();
+		ctx.strokeStyle = '#f3f3f3';
+		ctx.lineWidth = w;
+		ctx.arc(cx, cy, r-(w/2), sRad, eRad, false);
+		ctx.stroke();
+		ctx.closePath();
+		
+		
+		sRad = -90 * RAD;
+		degree = -90 + ( 360 * 0.4 );
+		eRad = degree * RAD;
+		
+		ctx.beginPath();
+		// 219dd1
+		// ebc85e
+		// e86741
+		ctx.strokeStyle = '#e86741';
+		ctx.lineWidth = w;
+		ctx.arc(cx, cy, r-(w/2), sRad, eRad, false);
+		ctx.stroke();
+		ctx.closePath();
+		
+		
+		ctx.font = '12px Arial';
+		ctx.fillStyle = '#bfc6cc';
+		ctx.textAlign = 'center';
+		ctx.fillText('temperature\ntest', cx, cy-titleY); 
+		
+		ctx.font = '32px Arial';
+		ctx.fillStyle = '#219dd1';
+		ctx.textBaseline = 'top';
+		ctx.textAlign = 'center';
+		ctx.fillText('40', cx, cy-valueY);
+		
+				
+		
+		return;
+		//
+		//ctx.fillStyle = "#fcf8ee";
+		//ctx.fillRect( 0, 0, canvas.width, canvas.height );
+		//
+				
+		ctx.beginPath();
+		ctx.strokeStyle = "#d6a142";
+		ctx.lineCap = "square";
+		ctx.lineJoin = "meter";
+		ctx.lineWidth = 2;
+		ctx.moveTo( 100, 300 );
+		ctx.lineTo( 600, 300 );
+		ctx.stroke();
+		ctx.closePath();
+		
+		
+		ctx.fillStyle = "#000";
+		var i=-90, len=i+360,
+		cx=100,
+		cy=300,
+		x, y,
+		sRad, eRad,
+		r=50;
+		
+		function drawCircle(){
+			x = 100 + ( Math.cos(i * RAD) * r );
+			y = 300 + ( Math.sin(i * RAD) * r );
+			console.log( x, y );
+			//
+			setTimeout( function(){
+				i++;
+				ctx.fillRect( x, y, 1 , 1 );
+				if( i < len ){
+					drawCircle();
+				}
+			}, 10 );
+		}
+		
+		//drawCircle();
+		ctx.beginPath();
+		ctx.fillStyle = "#0FF";
+		ctx.strokeStyle = "#000000";
+		
+		sRad = (0-90)*RAD;
+		eRad = (270-90)*RAD;
+		
+		ctx.moveTo( cx, cy );
+		
+		x = cx + ( Math.cos(sRad) * r );
+		y = cy + ( Math.sin(sRad) * r );
+		ctx.lineTo( cx, cy );
+		
+		ctx.arc( cx, cy, 50, sRad, eRad, false );
+		
+		x = cx + ( Math.cos(eRad) * r );
+		y = cy + ( Math.sin(eRad) * r );
+		ctx.lineTo( cx, cy );
+		
+		//ctx.stroke();
+		ctx.fill();
+		ctx.closePath();
+		
+		//
+		
+		
+		
+		
+		
+	})();
+</script>
+		
+		
+	</body>
+</html>

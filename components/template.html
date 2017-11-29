@@ -1,0 +1,382 @@
+
+<!-- BUTTON -->
+
+<template id="tmpl-m5c-button01">
+	<style>@import "../components/css/template.css";</style>
+	<a href="javascript:void(0)" class="m5c-button type01 m5c-button-normal">
+		<span><strong><content></content></strong></span>
+	</a>
+</template>
+
+<template id="tmpl-m5c-button02">
+	<style>@import "../components/css/template.css";</style>
+	<a href="javascript:void(0)" class="m5c-button type02 m5c-button-normal">
+		<span><strong><content></content></strong></span>
+	</a>
+</template>
+
+<template id="tmpl-m5c-button03">
+	<style>@import "../components/css/template.css";</style>
+	<a href="javascript:void(0)" class="m5c-button type03 m5c-button-normal">
+		<span><strong><content></content></strong></span>
+	</a>
+</template>
+
+<template id="tmpl-m5c-button04">
+	<style>@import "../components/css/template.css";</style>
+	<a href="javascript:void(0)" class="m5c-button type04 m5c-button-normal">
+		<span><strong><content></content></strong></span>
+	</a>
+</template>
+
+
+<!-- TOGGLE -->
+
+<template id="tmpl-toggle01">
+	<style>@import "../components/css/template.css";</style>
+	<div class="m5c-toggle-button type01 m5c-toggle-button-off">
+		<div class="m5c-toggle-button-text"><content></content></div>
+		<div class="m5c-toggle-button-container m5c-toggle-button-target">
+			<div class="m5c-toggle-button-bg">
+			</div>
+			<div class="m5c-toggle-button-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+<template id="tmpl-toggle02">
+	<style>@import "../components/css/template.css";</style>
+	<div class="m5c-toggle-button type02 m5c-toggle-button-off">
+		<div class="m5c-toggle-button-text"><content></content></div>
+		<div class="m5c-toggle-button-container m5c-toggle-button-target">
+			<div class="m5c-toggle-button-bg">
+			</div>
+			<div class="m5c-toggle-button-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+<template id="tmpl-toggle03">
+	<style>@import "../components/css/template.css";</style>
+	<div class="m5c-toggle-button type03 m5c-toggle-button-off">
+		<div class="m5c-toggle-button-text"><content></content></div>
+		<div class="m5c-toggle-button-container m5c-toggle-button-target">
+			<div class="m5c-toggle-button-bg">
+			</div>
+			<div class="m5c-toggle-button-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+<template id="tmpl-toggle04">
+	<style>@import "../components/css/template.css";</style>
+	<div class="m5c-toggle-button type04 m5c-toggle-button-off">
+		<div class="m5c-toggle-button-text"><content></content></div>
+		<div class="m5c-toggle-button-container m5c-toggle-button-target">
+			<div class="m5c-toggle-button-bg">
+			</div>
+			<div class="m5c-toggle-button-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+<!-- SLIDER -->
+
+<template id="tmpl-slider">
+	<style>
+		@import "../components/css/template.css";
+		:host {
+			display : block;
+		}
+	</style>
+	<div class="m5c-slider">
+		<div class="m5c-slider-value m5c-slider-min"></div>
+		<div class="m5c-slider-value m5c-slider-max"></div>
+		<div class="m5c-slider-text"><strong></div>
+		<div class="m5c-slider-container">
+			<div class="m5c-slider-bar-bg">
+			</div>
+			<div class="m5c-slider-bar-gage">
+			</div>
+			<div class="m5c-slider-bar-point-start">
+			</div>
+			<div class="m5c-slider-bar-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<template id="tmpl-gage">
+	<style>
+		@import "../components/css/arduino-kit.css";
+		:host {
+			display : block;
+		}
+	</style>
+	<div class="m5c-circle-monitor">
+		<canvas class="paper" width="150px" height="150px"></canvas>
+	</div>
+</template>
+
+<script>
+(function(){
+		
+	/**
+	 * Button
+	 *  */
+	m5c.register( {
+		is : 'm5c-button-type01',
+		template : '#tmpl-m5c-button01',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-button-type02',
+		template : '#tmpl-m5c-button02',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-button-type03',
+		template : '#tmpl-m5c-button03',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-button-type04',
+		template : '#tmpl-m5c-button04',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	/**
+	 * Toggle
+	 *  */
+	m5c.register( {
+		is : 'm5c-toggle-type01',
+		template : '#tmpl-toggle01',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-toggle-type02',
+		template : '#tmpl-toggle02',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-toggle-type03',
+		template : '#tmpl-toggle03',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'm5c-toggle-type04',
+		template : '#tmpl-toggle04',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	
+	/**
+	 * Slider
+	 *  */
+	m5c.register( {
+		is : 'm5c-slider',
+		template : '#tmpl-slider',
+		prototype : m5c.component.getPrototype( 'slider' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	
+	return;
+	
+	
+	
+	
+	m5c.register( {
+		is : 'relay-power',
+		template : '#tmpl-power',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'temperature-display',
+		template : '#tmpl-gage',
+		prototype : m5c.component.getPrototype( 'circle-monitor' ),
+		attrs : {
+			//gage-min, gage-max, gage-value, m5c-cmd, connect
+		},
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init({
+					radius : 70,
+					innerRadius : 60,
+					baseColor : '#f3f3f3',
+					pointColor : '#219dd1',
+					
+					title : 'temperature',
+					titleColor : '#bfc6cc',
+					titleSize : 12,
+					
+					valueColor : '#219dd1',
+					valueSize : 32
+				});
+			},
+			attachedCallback : function(){},
+			detachedCallback : function(){},
+			attributeChangedCallback : function(){}
+		}
+	});
+	
+	m5c.register( {
+		is : 'devicelight-display',
+		template : '#tmpl-gage',
+		prototype : m5c.component.getPrototype( 'circle-monitor' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init({
+					radius : 70,
+					innerRadius : 60,
+					baseColor : '#f3f3f3',
+					pointColor : '#ebc85e',
+					
+					title : 'devicelight',
+					titleColor : '#bfc6cc',
+					titleSize : 12,
+					
+					valueColor : '#219dd1',
+					valueSize : 32
+				});
+			},
+			attachedCallback : function(){},
+			detachedCallback : function(){},
+			attributeChangedCallback : function(){}
+		}
+	});
+	
+	m5c.register( {
+		is : 'proximity-display',
+		template : '#tmpl-gage',
+		prototype : m5c.component.getPrototype( 'circle-monitor' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init({
+					radius : 70,
+					innerRadius : 60,
+					baseColor : '#f3f3f3',
+					pointColor : '#e86741',
+					
+					title : 'devicelight',
+					titleColor : '#bfc6cc',
+					titleSize : 12,
+					
+					valueColor : '#219dd1',
+					valueSize : 32
+				});
+			},
+			attachedCallback : function(){},
+			detachedCallback : function(){},
+			attributeChangedCallback : function(){}
+		}
+	});
+	
+})();
+</script>
+
+
+
+
+
+

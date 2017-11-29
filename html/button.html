@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Button-sample</title>
+		
+		<link type="text/css" rel="stylesheet" media="all" href="../css/common.css" />
+		
+		<script type="text/javascript" src="../js/libs/webcomponents.js" ></script>
+		
+		<!-- 라이브러리 링크-->
+		<script type="text/javascript" src="../js/m5c.client.core.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.components.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.config.js" ></script>
+		
+		<!-- 템플릿 링크 -->
+		<link rel="import" href="../components/template.button.html">
+		
+		<style>
+			
+			body {
+				background : #DDD;
+				padding : 3%;
+			}
+			
+			.panel {
+				padding : 20px;
+				background : #FFFFFF;
+			}
+			
+			.comptypeslist {
+				position: relative;
+				text-align: center;
+			}
+			
+			.comptypes {
+				
+			}
+			
+			.comprows {
+				display:inline-block;
+				text-align: center;
+				margin : 0 auto;
+			}
+			
+			.compwrap {
+				min-width : 114px;
+				text-align: center;
+				float : left;
+				margin-right: 30px;
+			}
+			
+			.compwrap.lst {
+				margin-right: 0;
+			}
+			
+			.compwrap.subject {
+				text-align : left;
+			}
+			
+			.compwrap .title {
+				color : #000;
+			}
+			
+			
+		</style>
+		
+		
+		<script type="text/javascript">
+		
+			function toArray( likeArray ){
+				return Array.prototype.slice.call( likeArray, 0 );
+			}
+		
+			m5c.ready( function(){
+				var normals = toArray( document.body.querySelectorAll( '.normal' ) );
+				normals.forEach( function( item, i ){
+					m5c.addEvent( item, item.ON_TAB, function(){
+						console.log( 'tab' );
+					} );
+				} );
+				
+				var disabled = toArray( document.body.querySelectorAll( '.disabled' ) );
+				disabled.forEach( function( item, i ){
+					m5c.addEvent( item, item.ON_TAB, function(){
+						console.log( '이벤트 발생안함' );
+					} );
+				} );
+				
+				var press = toArray( document.body.querySelectorAll( '.press' ) );
+				press.forEach( function( item, i ){
+					m5c.addEvent( item, item.ON_TAB, function(){
+						console.log( this.state );
+					} );
+				} );
+			} );
+		</script>
+
+	</head>
+
+	
+	<body>
+		<div class="panel">
+			<ul class="comptypeslist">
+				<li class="comptypes">
+					<ul class="comprows">
+						<li class="compwrap subject">
+							<strong class="title">Normal</strong>
+						</li>
+						<li class="compwrap subject">
+							<strong class="title">Disabled</strong>
+						</li>
+						<li class="compwrap subject lst">
+							<strong class="title">Press(toggle)</strong>
+						</li>
+					</ul>
+				</li>
+				<li class="comptypes">
+					<ul class="comprows">
+						<li class="compwrap">
+							<m5c-button-type01 class="normal" m5c-cmd="sample" send-value="" connect="true">
+								확인
+							</m5c-button-type01>
+						</li>
+						<li class="compwrap">
+							<m5c-button-type01 class="disabled" m5c-cmd="sample" send-value="" connect="true" disabled>
+								확인
+							</m5c-button-type01>
+						</li>
+						<li class="compwrap lst">
+							<m5c-button-type01 class="press" m5c-cmd="sample" send-value="" connect="true" toggle="true" state="press" >
+								확인
+							</m5c-button-type01>
+						</li>
+					</ul>
+				</li>
+				
+				<li class="comptypes">
+					<ul class="comprows">
+						<li class="compwrap">
+							<m5c-button-type02 class="normal" m5c-cmd="sample" send-value="" connect="true">
+								확인
+							</m5c-button-type02>
+						</li>
+						<li class="compwrap">
+							<m5c-button-type02 class="disabled" m5c-cmd="sample" send-value="" connect="true" disabled>
+								확인
+							</m5c-button-type02>
+						</li>
+						<li class="compwrap lst">
+							<m5c-button-type02 class="press" m5c-cmd="sample" send-value="" connect="true" toggle="true" state="press" >
+								확인
+							</m5c-button-type02>
+						</li>
+					</ul>
+				</li>
+				
+				<li class="comptypes">
+					<ul class="comprows">
+						<li class="compwrap">
+							<m5c-button-type03 class="normal" m5c-cmd="sample" send-value="" connect="true">
+								확인
+							</m5c-button-type03>
+						</li>
+						<li class="compwrap">
+							<m5c-button-type03 class="disabled" m5c-cmd="sample" send-value="" connect="true" disabled>
+								확인
+							</m5c-button-type03>
+						</li>
+						<li class="compwrap lst">
+							<m5c-button-type03 class="press" m5c-cmd="sample" send-value="" connect="true" toggle="true" state="press" >
+								확인
+							</m5c-button-type03>
+						</li>
+					</ul>
+				</li>
+				
+				<li class="comptypes">
+					<ul class="comprows">
+						<li class="compwrap">
+							<m5c-button-type04 class="normal" m5c-cmd="sample" send-value="" connect="true">
+								확인
+							</m5c-button-type04>
+						</li>
+						<li class="compwrap">
+							<m5c-button-type04 class="disabled" m5c-cmd="sample" send-value="" connect="true" disabled>
+								확인
+							</m5c-button-type04>
+						</li>
+						<li class="compwrap lst">
+							<m5c-button-type04 class="press" m5c-cmd="sample" send-value="" connect="true" toggle="true" state="press" >
+								확인
+							</m5c-button-type04>
+						</li>
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+		
+	</body>
+</html>

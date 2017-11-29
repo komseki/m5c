@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Toast-sample</title>
+		
+		<link type="text/css" rel="stylesheet" media="all" href="../css/common.css" />
+		
+		<script type="text/javascript" src="../js/libs/webcomponents.js" ></script>
+		
+		<!-- 라이브러리 링크-->
+		<script type="text/javascript" src="../js/m5c.client.core.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.components.js" ></script>
+		<script type="text/javascript" src="../js/m5c.client.config.js" ></script>
+		
+		<!-- 템플릿 링크 -->
+		<link rel="import" href="../components/template.toast.html">
+		
+		<style>
+			
+			html, body {
+				width : 100%;
+				height : 100%;
+			}
+			
+			#PAGE {
+				width : 100%;
+				height : 100%;
+			}
+			
+			
+		</style>
+		
+		<script type="text/javascript">
+			m5c.ready( function(){
+				var show = document.getElementById('show'),
+					hide = document.getElementById('hide'),
+					toast = document.getElementById('toast');
+				//	
+				m5c.addEvent(show, 'click', function(){
+					toast.show();
+				} );
+				
+				m5c.addEvent(hide, 'click', function(){
+					toast.hide();
+				} );
+			} );
+		</script>
+
+	</head>
+
+	
+	<body>
+		<div id="PAGE">
+			<button id="show">SHOW</button>
+			<button id="hide">HIDE</button>
+			<m5c-toast id="toast" style="display:none;">메세지가 보여집니다.</m5c-toast>
+		</div>
+	</body>
+</html>

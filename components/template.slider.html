@@ -1,0 +1,56 @@
+<!-- SLIDER -->
+
+<template id="tmpl-slider">
+	<style>
+		@import "../components/css/template.css";
+		:host {
+			display : block;
+		}
+	</style>
+	<div class="m5c-slider">
+		<div class="m5c-slider-value m5c-slider-min"></div>
+		<div class="m5c-slider-value m5c-slider-max"></div>
+		<div class="m5c-slider-text"><strong></div>
+		<div class="m5c-slider-container">
+			<div class="m5c-slider-bar-bg">
+			</div>
+			<div class="m5c-slider-bar-gage">
+			</div>
+			<div class="m5c-slider-bar-point-start">
+			</div>
+			<div class="m5c-slider-bar-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+
+<script>
+(function(){
+		
+	
+	/**
+	 * Slider
+	 *  */
+	m5c.register( {
+		is : 'm5c-slider',
+		template : '#tmpl-slider',
+		prototype : m5c.component.getPrototype( 'slider' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+})();
+</script>
+
+
+
+
+
+

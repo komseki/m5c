@@ -1,0 +1,196 @@
+<template id="templ-motor-button">
+	<style>@import "../components/css/arduino-kit.css";</style>
+	<a href="javascript:void(0)" class="m5c-button type01 m5c-button-normal">
+		<span><strong><content></content></strong></span>
+	</a>
+</template>
+
+<template id="tmpl-motor-speed">
+	<style>@import "../components/css/arduino-kit.css";</style>
+	<div class="m5c-slider">
+		<div class="m5c-slider-value m5c-slider-min"></div>
+		<div class="m5c-slider-value m5c-slider-max"></div>
+		<div class="m5c-slider-text"><strong></div>
+		<div class="m5c-slider-container">
+			<div class="m5c-slider-bar-bg">
+			</div>
+			<div class="m5c-slider-bar-gage">
+			</div>
+			<div class="m5c-slider-bar-point-start">
+			</div>
+			<div class="m5c-slider-bar-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+<template id="tmpl-power">
+	<style>@import "../components/css/arduino-kit.css";</style>
+	<div class="m5c-toggle-button type02 m5c-toggle-button-off">
+		<div class="m5c-toggle-button-text"><content></content></div>
+		<div class="m5c-toggle-button-container m5c-toggle-button-target">
+			<div class="m5c-toggle-button-bg">
+			</div>
+			<div class="m5c-toggle-button-point">
+			</div>
+		</div>
+	</div>
+</template>
+
+<template id="tmpl-gage">
+	<style>@import "../components/css/arduino-kit.css";</style>
+	<div class="m5c-circle-monitor">
+		<canvas class="paper" width="150px" height="150px"></canvas>
+	</div>
+</template>
+
+<script type="text/javascript">
+(function(){
+	m5c.register( {
+		is : 'motor-left',
+		template : '#templ-motor-button',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'motor-right',
+		template : '#templ-motor-button',
+		prototype : m5c.component.getPrototype( 'button' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'motor-speed',
+		template : '#tmpl-motor-speed',
+		prototype : m5c.component.getPrototype( 'slider' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'relay-power',
+		template : '#tmpl-power',
+		prototype : m5c.component.getPrototype( 'toggle' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init();
+			}
+		}
+	});
+	
+	m5c.register( {
+		is : 'temperature-display',
+		template : '#tmpl-gage',
+		prototype : m5c.component.getPrototype( 'circle-monitor' ),
+		attrs : {
+			//gage-min, gage-max, gage-value, m5c-cmd, connect
+		},
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init({
+					radius : 70,
+					innerRadius : 60,
+					baseColor : '#f3f3f3',
+					pointColor : '#219dd1',
+					
+					title : 'temperature',
+					titleColor : '#bfc6cc',
+					titleSize : 12,
+					
+					valueColor : '#219dd1',
+					valueSize : 32
+				});
+			},
+			attachedCallback : function(){},
+			detachedCallback : function(){},
+			attributeChangedCallback : function(){}
+		}
+	});
+	
+	m5c.register( {
+		is : 'devicelight-display',
+		template : '#tmpl-gage',
+		prototype : m5c.component.getPrototype( 'circle-monitor' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init({
+					radius : 70,
+					innerRadius : 60,
+					baseColor : '#f3f3f3',
+					pointColor : '#ebc85e',
+					
+					title : 'devicelight',
+					titleColor : '#bfc6cc',
+					titleSize : 12,
+					
+					valueColor : '#219dd1',
+					valueSize : 32
+				});
+			},
+			attachedCallback : function(){},
+			detachedCallback : function(){},
+			attributeChangedCallback : function(){}
+		}
+	});
+	
+	m5c.register( {
+		is : 'proximity-display',
+		template : '#tmpl-gage',
+		prototype : m5c.component.getPrototype( 'circle-monitor' ),
+		lifecycles : {
+			readyCallback : function(){
+				this.create();
+			},
+			createdCallback : function(){
+				this.init({
+					radius : 70,
+					innerRadius : 60,
+					baseColor : '#f3f3f3',
+					pointColor : '#e86741',
+					
+					title : 'devicelight',
+					titleColor : '#bfc6cc',
+					titleSize : 12,
+					
+					valueColor : '#219dd1',
+					valueSize : 32
+				});
+			},
+			attachedCallback : function(){},
+			detachedCallback : function(){},
+			attributeChangedCallback : function(){}
+		}
+	});	
+		
+})();
+</script>
